@@ -1,0 +1,456 @@
+{
+	"pages": [
+		//#ifndef H5
+		{
+			"path": "pages/start/index",
+			"style": {
+				"navigationBarTitleText": "启动",
+				"enablePullDownRefresh": false
+			}
+		},
+		//#endif
+
+		{
+			"path": "pages/tabBar/home/index",
+			"style": {
+				"navigationBarTitleText": "首页",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/tabBar/bill/index",
+			"style": {
+				"navigationBarTitleText": "注单"
+			}
+		},
+		{
+			"path": "pages/tabBar/mine/index",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		},
+		{
+			"path": "pages/tabBar/eventsManage/index",
+			"style": {
+				"navigationBarTitleText": "优惠"
+			}
+		},
+
+		{
+			"path": "pages/tabBar/savingsAccount/index",
+			"style": {
+				"navigationBarTitleText": "存款"
+			}
+		},
+		{
+			"path": "pages/tabBar/message/index",
+			"style": {
+				"navigationBarTitleText": "客服"
+			}
+		},
+		{
+			"path": "pages/myManage/updatePaw/index",
+			"style": {
+				"navigationBarTitleText": "账号安全"
+			}
+		},
+		{
+			"path": "pages/myManage/myInfo/index",
+			"style": {
+				"navigationBarTitleText": "个人中心"
+			}
+		},
+		{
+			"path": "pages/login/index",
+			"style": {
+				"navigationBarTitleText": "登录&注册"
+			}
+		},
+		{
+			"path": "pages/gameManage/gameVenue/index",
+			"style": {
+				"navigationBarTitleText": "游戏场馆"
+			}
+		},
+		{
+			"path": "pages/gameManage/searchGame/index",
+			"style": {
+				"navigationBarTitleText": "游戏搜索"
+			}
+		},
+
+		{
+			"path": "pages/myManage/message/index",
+			"style": {
+				"navigationBarTitleText": "我的消息"
+			}
+		},
+		{
+			"path": "pages/myManage/trading/index",
+			"style": {
+				"navigationBarTitleText": "交易记录"
+			}
+		},
+		{
+			"path": "pages/savingsManage/currentAudit/index",
+			"style": {
+				"navigationBarTitleText": "流水审核"
+			}
+		},
+		{
+			"path": "pages/savingsManage/withdrawalRecord/index",
+			"style": {
+				"navigationBarTitleText": "提现记录"
+			}
+		},
+		{
+			"path": "pages/myManage/statement/index",
+			"style": {
+				"navigationBarTitleText": "个人报表"
+			}
+		},
+
+		{
+			"path": "pages/codeWashing/index",
+			"style": {
+				"navigationBarTitleText": "洗码"
+			}
+		},
+		{
+			"path": "pages/codeWashing/list",
+			"style": {
+				"navigationBarTitleText": "洗码记录"
+			}
+		},
+		{
+			"path": "pages/myManage/mailbox/index",
+			"style": {
+				"navigationBarTitleText": "填写邮箱"
+			}
+		},
+		{
+			"path": "pages/myManage/updateUser/index",
+			"style": {
+				"navigationBarTitleText": "修改用户信息"
+			}
+		},
+		{
+			"path": "pages/eventsManage/details/index",
+			"style": {
+				"navigationBarTitleText": "活动详情"
+			}
+		},
+		{
+			"path": "pages/myManage/message/details",
+			"style": {
+				"navigationBarTitleText": "信息详情"
+			}
+		},
+		{
+			"path": "pages/vipManage/vip/index",
+			"style": {
+				"navigationBarTitleText": "vip中心"
+			}
+		},
+		{
+			"path": "pages/gameManage/searchVenueGame/index",
+			"style": {
+				"navigationBarTitleText": "场馆游戏"
+			}
+		},
+		{
+			"path": "pages/savingsManage/zfb/index",
+			"style": {
+				"navigationBarTitleText": "添加支付宝"
+			}
+		},
+		{
+			"path": "pages/savingsManage/zfb/list",
+			"style": {
+				"navigationBarTitleText": "提现支付宝管理"
+			}
+		},
+		{
+			"path": "pages/savingsManage/addPurse/index",
+			"style": {
+				"navigationBarTitleText": "添加钱包"
+			}
+		},
+		{
+			"path": "pages/savingsManage/addPurse/list",
+			"style": {
+				"navigationBarTitleText": "提现虚拟币钱包管理"
+			}
+		},
+		{
+			"path": "pages/savingsManage/bankCard/index",
+			"style": {
+				"navigationBarTitleText": "添加银行卡"
+			}
+		},
+		{
+			"path": "pages/savingsManage/bankCard/list",
+			"style": {
+				"navigationBarTitleText": "提现银行卡管理"
+			}
+		},
+		{
+			"path": "pages/kf/index",
+			"style": {
+				"navigationBarTitleText": "客服"
+			}
+		},
+		{
+			"path": "pages/gameManage/game/index",
+			"style": {
+				"navigationBarTitleText": "",
+				"pageOrientation": "auto",
+				"app-plus": {
+					"fullscreen": true,
+					"titleNView": false,
+					"autoBackButton": false,
+					"bounce": "none",
+					"animationType": "slide-in-bottom",
+					"popGesture":"none",
+					"safearea": {
+						"bottom": {
+							"offset": "none"
+						}
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/savingsManage/savings/index",
+			"style": {
+				"navigationBarTitleText": "存款信息"
+			}
+		},
+		{
+			"path": "pages/savingsManage/payment/index",
+			"style": {
+				"navigationBarTitleText": "支付"
+			}
+		},
+		{
+			"path": "pages/savingsManage/topUp/index",
+			"style": {
+				"navigationBarTitleText": "充值记录"
+			}
+		},
+		{
+			"path": "pages/savingsManage/topUp/recharge",
+			"style": {
+				"navigationBarTitleText": "充值",
+				"navigationBarBackgroundColor": "#1c1c1c",
+				"navigationStyle": "default"
+			}
+		},
+		{
+			"path": "pages/login/phoneCode",
+			"style": {
+				"navigationBarTitleText": "验证登录"
+			}
+		},
+		{
+			"path": "pages/myManage/forgotPassword/index",
+			"style": {
+				"navigationBarTitleText": "确认用户信息"
+			}
+		},
+		{
+			"path": "pages/myManage/updatePhone/index",
+			"style": {
+				"navigationBarTitleText": "绑定手机号码"
+			}
+		},
+		{
+			"path": "pages/myManage/forgotPassword/newPaw",
+			"style": {
+				"navigationBarTitleText": "输入新密码"
+			}
+		},
+		{
+			"path" : "pages/tutorial/index",
+			"style" : 
+			{
+				"navigationBarTitleText": "新手教程",
+				"disableScroll": true,
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path" : "pages/tutorial/details",
+			"style" : 
+			{
+				"navigationBarTitleText" : "文本导航详情",
+				"disableScroll": true,
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path" : "pages/aboutUs/index",
+			"style" : 
+			{
+				"navigationBarTitleText" : "关于我们",
+				"disableScroll": true,
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path" : "pages/aboutUs/details",
+			"style" : 
+			{
+				"navigationBarTitleText" : "关于我们-详情",
+				"disableScroll": true,
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path" : "pages/download/index",
+			"style" : 
+			{
+				"navigationBarTitleText" : "app下载",
+				"disableScroll": true,
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path" : "pages/download/addToDesk",
+			"style" : 
+			{
+				"navigationBarTitleText" : "添加到主屏幕",
+				"disableScroll": false,
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path" : "pages/myManage/sponsor/index",
+			"style" : 
+			{
+				"navigationBarTitleText" : "官方赞助",
+				"disableScroll": false,
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path" : "pages/myManage/sponsor/details",
+			"style" : 
+			{
+				"navigationBarTitleText" : "官方赞助",
+				"disableScroll": false,
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path" : "pages/tabBar/eventsManage/mission",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
+		},
+		{
+			"path" : "pages/tabBar/bill/details",
+			"style" : 
+			{
+				"navigationBarTitleText" : "详情",
+				"disableScroll": false,
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path" : "pages/version/index",
+			"style" :
+			{
+				"navigationBarTitleText" : "更新"
+			}
+		},
+		{
+			"path" : "pages/eventAnnouncement/index",
+			"style" :
+			{
+				"navigationBarTitleText" : "赛事公告"
+			}
+		},
+		{
+			"path" : "pages/matchResult/index",
+			"style" :
+			{
+				"navigationBarTitleText" : "赛事结果"
+			}
+		},
+		{
+			"path" : "pages/dishSimulate/index",
+			"style" :
+			{
+				"navigationBarTitleText" : "盘口教程"
+			}
+		},
+		{
+			"path" : "pages/sportRules/index",
+			"style" :
+			{
+				"navigationBarTitleText" : "投注规则"
+			}
+		},
+		{
+			"path" : "pages/noInternet/index",
+			"style" :
+			{
+				"navigationBarTitleText" : "无网络"
+			}
+		}
+	],
+	"tabBar": {
+		"color": "#3a3a3a",
+		"selectedColor": "#ae8d45",
+		"backgroundColor": "#FFFFFF",
+		"iconWidth": "22px",
+		"height": "55px",
+		"fontSize": "11px",
+		"list": [
+			{
+				"pagePath": "pages/tabBar/home/index",
+				"text": "首页",
+				"iconPath": "/static/tabbar/home1.png",
+				"selectedIconPath": "/static/tabbar/home11.png"
+			},
+			{
+				"pagePath": "pages/tabBar/eventsManage/index",
+				"text": "活动",
+				"iconPath": "/static/tabbar/hd1.png",
+				"selectedIconPath": "/static/tabbar/hd11.png"
+			},
+			{
+				"pagePath": "pages/tabBar/savingsAccount/index",
+				"text": "充提",
+				"iconPath": "/static/tabbar/ct1.png",
+				"selectedIconPath": "/static/tabbar/ct11.png"
+			},
+			{
+				"pagePath": "pages/tabBar/bill/index",
+				"text": "注单",
+				"iconPath": "/static/tabbar/zd1.png",
+				"selectedIconPath": "/static/tabbar/zd11.png"
+			},
+			{
+				"pagePath": "pages/tabBar/mine/index",
+				"text": "我的",
+				"iconPath": "/static/tabbar/wd1.png",
+				"selectedIconPath": "/static/tabbar/wd11.png"
+			}
+		]
+	},
+	"sitemapLocation": "sitemap.json",
+	"globalStyle": {
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#1c1c1c",
+		"backgroundColorTop": "#ae8d45",
+		"navigationBarTitleText": "AG",
+		"navigationBarTextStyle": "white",
+		"navigationStyle": "custom",
+		"enablePullDownRefresh": false,
+		"pageOrientation":"portrait"
+	},
+	"subPackages": []
+}

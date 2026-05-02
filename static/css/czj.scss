@@ -1,0 +1,102 @@
+/* 页面整体样式    充值提现 交易 列表css*/
+.container-box{
+  width: 100vw;
+  background-color: $uni-default-back0Color;
+  // #ifdef H5
+   height: 100%;
+  // #endif
+  // #ifdef APP-PLUS || MP-WEIXIN
+  height:100vh;
+  // #endif
+
+  .h-top {
+    color: white;
+    .menuBox{
+      font-size: 22rpx;
+    }
+    image{
+      width: 50rpx;
+      height: 55rpx;
+      margin-right: 4rpx;
+    }
+  }
+  .container {
+    width: 100vw;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: $uni-bg-color-grey;
+    // height: 100%;
+    border-radius: 30rpx 30rpx 0 0;
+
+    .table-box{
+      height: 68rpx;
+      width:calc(100vw - 60rpx);
+      border-radius: 40rpx 40rpx 0 0;
+      color: #FFFFFF;
+      background: $uni-bg-color;
+      padding: 19rpx 30rpx ;
+      font-size: 26rpx;
+      margin-bottom: 10rpx;
+      >view:first-child{
+        border-radius: 40rpx  0 0 40rpx;
+      }
+      >view:last-child{
+        border-radius:0 40rpx 40rpx 0;
+      }
+      view{
+        flex: 1;
+        text-align: center;
+        color: $uni-text-color;
+        background: $uni-bg-color-grey;
+      }
+      .action{
+        >view{
+          width: 100%;
+          height: 100%;
+          color: $uni-bg-color;
+          background:$uni-default-color;
+          border-radius: 40rpx!important;
+        }
+
+      }
+    }
+    .list-box{
+      background:$uni-bg-color;
+      font-size: 22rpx;
+      border-bottom: #cccccc;
+      height: 116rpx;
+      margin-bottom: 10rpx;
+      padding: 20rpx 30rpx;
+      color: #a9a9a9;
+      .name{
+        color: #010101;
+        font-size: 24rpx;
+        font-family: $uni-family-Bold;
+      }
+      .nameType{
+        color: #010101;
+        font-size: 24rpx;
+        font-family: $uni-family-Regular;
+      }
+      .money{
+        color: #c50404;
+        font-family: $uni-family-Heavy;
+        font-size: 26rpx;
+      }
+      .money1{
+        color: #06910b;
+        font-family: $uni-family-Heavy;
+        font-size: 26rpx;
+      }
+      text{
+        margin-right: 78rpx;
+      }
+      image{
+        width: 30rpx;
+        height: 30rpx;
+      }
+    }
+
+
+  }
+}
