@@ -107,12 +107,6 @@ export const userStore = defineStore("user", {
      setAccountKey(data: any) {
          this.accountKey = data
     },
-    updateName(data: any) {
-      this.name = newName;
-    },
-    incrementAge() {
-      this.age++;
-    },
 	setAdderss(data: any) {
 	    this.locationInfo=data
 	},

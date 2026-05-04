@@ -66,9 +66,9 @@
 					<view class="u-flex">
 						<view class="menu-item u-flex-direction-column u-flex-shrink0"
 							:class="{action:index == gameMenuNum}" v-for="(item,index) in menuTWOList" :key="index" @click="gameMenuScroll(item,index)" :id="'gameMenu'+ index">
-							<image v-if="index<3" :src="baseUrl+item.img_bar" mode="aspectFill"></image>
+              <image v-if="index<3" :src="item.img_bar" mode="aspectFill"></image>
               <image v-else :src="baseImgUrl+item.img_bar" mode="aspectFill"></image>
-              <view>{{item.venue_name}}<text v-if="index>2">{{menuNumName}}</text></view>
+              <view>{{resolveVenueMenuName(item, index)}}</view>
 						</view>
 					</view>
 				</scroll-view>
@@ -112,14 +112,14 @@
 <script lang="ts" setup>
 	import Loading from '@/components/Loading/index.vue'
 	import stationMessage from '@/components/stationMessage/index.vue'
-	import { getBalance } from "@/hooks/publicRequest";
+  import { getBalance, getylGameListBut } from "@/hooks/publicRequest";
 	import { computed, reactive, ref, shallowRef, watch,watchEffect } from "vue";
   import environment from '@/utils/environments.ts'
   const baseUrl = environment.envConfigs.url
   const baseImgUrl = environment.envConfigs.imgUrl
 	import { getGameList,getHomeCollectList,getVenueList,homenotifyMarqueeList,homeBulletinList,getActivityInfo} from "@/api/user";
 	import { onLoad, onShow } from "@dcloudio/uni-app";
-	import { toPtah,menusFn,pointsList} from "@/utils/index"
+  import { toPtah,menusFn,pointsList,normalizeGameType} from "@/utils/index"
 	import { userStore } from "@/stores/user"
 	import { messageList } from "@/api/user"
 	
@@ -208,6 +208,18 @@
 
 	}
 
+  const resolveVenueMenuName = (item: any, index: number) => {
+    if (index < 3) return item?.venue_name || ''
+    const categoryName = String(menuNumName.value || '').trim()
+    const venueName = String(item?.venue_name || '').trim()
+    if (venueName && venueName !== categoryName) return venueName
+    const alias = String(item?.config_alias || item?.alias || '').trim()
+    if (alias) return alias
+    const venueCode = String(item?.venue_code || '').trim()
+    if (venueCode) return venueCode
+    return venueName || categoryName
+  }
+
 
 	//获取娱乐场 游戏
 	// const getylGameListBut = async () => {
@@ -245,27 +257,25 @@
 	const getVenueListBut = () => {
     menuTWOList.value=[]
     gameList.value=[]
-    const res =  allVenueList.value.filter(item => item.game_type  == formData.venue_type)
+  const res =  allVenueList.value.filter(item => normalizeGameType(item.game_type) == formData.venue_type)
+  const currentVenueList = ((res && res.length) ? res[0].list : []).filter(Boolean)
 
-    if(startStore().venueGameListType.includes(formData.venue_type)){
-      if (res && res.length) {
-        gameList.value = res[0].list
-      }
-      loading.value = false
-      return
-    }
     menuTWOList.value = menuTwo.value.map((it,index) => {
       it.game_type = formData.venue_type
       if(index){
-        it.venue_code =res[0].list.map(its=> its.venue_code)
+        it.venue_code = currentVenueList.map(its=> its?.venue_code).filter(Boolean)
       }
       return it
     })
-    if (res && res.length) {
-      menuTWOList.value = [...menuTWOList.value, ...res[0].list]
+    if (currentVenueList.length) {
+      menuTWOList.value = [...menuTWOList.value, ...currentVenueList]
     }
-    formData.venue_code =  menuTWOList.value[gameMenuNum.value].venue_code
-    getGameListBut()
+    formData.venue_code =  menuTWOList.value[gameMenuNum.value]?.venue_code || ''
+    if (formData.venue_code) {
+      getGameListBut()
+    } else {
+      loading.value = false
+    }
 
 	}
 
@@ -422,7 +432,7 @@
   }
 	onLoad(() => {
     uni.hideTabBar()
-	//	getylGameListBut()
+    getylGameListBut()
     getHomenotifyMarqueeList()
     getHomeBulletinList()
 	})

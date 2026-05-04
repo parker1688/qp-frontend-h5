@@ -16,9 +16,33 @@
   const agentId = environment.envConfigs.agentId
 	// #endif
 
+	const safeHideTabBar = () => {
+		try {
+			const result = uni.hideTabBar()
+			if (result && typeof result.then === 'function') {
+				result.catch(() => {})
+			}
+		} catch (e) {}
+	}
+
+	const safeLockOrientation = (mode) => {
+		try {
+			if (
+				typeof screen !== 'undefined' &&
+				screen.orientation &&
+				typeof screen.orientation.lock === 'function'
+			) {
+				const result = screen.orientation.lock(mode)
+				if (result && typeof result.then === 'function') {
+					result.catch(() => {})
+				}
+			}
+		} catch (e) {}
+	}
+
 	export default {
 		onLaunch: function(e) {
-			uni.hideTabBar()
+			safeHideTabBar()
 			const inviteCode = userStore().merchantCode
 			//#ifdef H5
 			const merchantUrl = userStore().merchantUrl
@@ -27,9 +51,9 @@
 			if (merchantUrl !== href) {
 				if (e.query.agent) {
 					userStore().setAgentId(+e.query.agent)
-					this.init({invite_code: e.query.agent})
+					Promise.resolve(this.init({invite_code: e.query.agent})).catch(() => {})
 				} else {
-					this.init({url: href})
+					Promise.resolve(this.init({url: href})).catch(() => {})
 				}
 			} else {
 				if (inviteCode) {
@@ -37,7 +61,7 @@
           getylGameListBut()
 				}
 			}
-			screen.orientation.lock('portrait');
+			safeLockOrientation('portrait');
 			//#endif
 
     // #ifdef MP
@@ -165,7 +189,7 @@
 				})
 			},
 			init(data) {
-				getMerchantCode({...data}).then(res => {
+				return getMerchantCode({...data}).then(res => {
 					if (res.code == 0 && res.data?.merchant_code) {
 						userStore().setMerchantCode(res.data.merchant_code)
 						getKfUrlBut()
@@ -176,7 +200,7 @@
 						getylGameListBut()
             clientlogsBut({ID:'startID',item:{...data,...res.data}})
 					}
-				})
+				}).catch(() => {})
 			}
 		}
 	}

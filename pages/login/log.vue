@@ -127,18 +127,25 @@ const loginAbnormal = async() =>{
   loginInfoBut(res.data)
 }
 const handleSubmit = async ()=>{
-  await logRef.value.validate()
-  //记住账号，缓存
-  const res= await login(formData)
-  userDataStore.setAccountKey({...formData,remAccount:remAccount.value})
-  if(res.code === 0){
-    loginInfoBut(res.data)
-  }else if(res.code === 100011){
-    iPabnormalRef.value.open({...res.data,username:formData.username},()=>{
-      loginAbnormal()
+  try {
+    await logRef.value.validate()
+    //记住账号，缓存
+    const res= await login(formData)
+    userDataStore.setAccountKey({...formData,remAccount:remAccount.value})
+    if(res.code === 0){
+      loginInfoBut(res.data)
+    }else if(res.code === 100011){
+      iPabnormalRef.value.open({...res.data,username:formData.username},()=>{
+        loginAbnormal()
 
-    })
-    // abnormalRef.value?.open({...res.data,username:formData.username})
+      })
+      // abnormalRef.value?.open({...res.data,username:formData.username})
+    }
+  } catch (err: any) {
+    console.error('[login handleSubmit error]', err)
+    if (typeof err === 'string' && err) {
+      uni.showToast({ icon: 'none', title: err })
+    }
   }
 }
 </script>

@@ -173,28 +173,34 @@ const rules = reactive<object>({
 
 
 const handleSubmit = async ()=> {
-  formData.visitorId=deviceData.value
-  await logRef.value.validate()
-  const data= await register(formData)
-  if(data.code === 0){
-    const token=data.data.token
-    const merchant_code=data.data.merchant_code
-    userDataStore.setToken(token)
-    userDataStore.setMerchantCode(merchant_code)
-    //#ifdef H5
-    userDataStore.setIsDownShow(true)
-    //#endif
-    getUserinfoBut()
-    uni.showToast({icon: 'success', title: '注册成功'})
-    setTimeout(()=>{
-    //  inviteAaveBut()
-      toPtah('/pages/tabBar/home/index',0)
-      dayReminderBut(false)
-      getRechargeWallet()
-    },2000)
-    clientlogsBut({ID:'SignInID',item:{...formData,...data.data}})
+  try {
+    formData.visitorId=deviceData.value
+    await logRef.value.validate()
+    const data= await register(formData)
+    if(data.code === 0){
+      const token=data.data.token
+      const merchant_code=data.data.merchant_code
+      userDataStore.setToken(token)
+      userDataStore.setMerchantCode(merchant_code)
+      //#ifdef H5
+      userDataStore.setIsDownShow(true)
+      //#endif
+      getUserinfoBut()
+      uni.showToast({icon: 'success', title: '注册成功'})
+      setTimeout(()=>{
+      //  inviteAaveBut()
+        toPtah('/pages/tabBar/home/index',0)
+        dayReminderBut(false)
+        getRechargeWallet()
+      },2000)
+      clientlogsBut({ID:'SignInID',item:{...formData,...data.data}})
+    }
+  } catch (err: any) {
+    console.error('[register handleSubmit error]', err)
+    if (typeof err === 'string' && err) {
+      uni.showToast({ icon: 'none', title: err })
+    }
   }
-
 }
 </script>
 

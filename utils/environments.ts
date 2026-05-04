@@ -5,25 +5,15 @@ const SERVE_CTX = {
 const configs: any = {
     // 生产环境
     production: {
-     //   正式10041  开发10000  测试10000
-        //正式
-        // url: 'https://web.ag3434.cc',
-        // imgUrl:'https://qp-prd-cdn-axdyebevbdhtasbu.a01.azurefd.net',
-        // agentId:10041,
-        //测试
-        // url: 'https://test-web.792376.cc',
-        // imgUrl:'https://qp-image-cdn-g0a2b4crg0aucxhm.a01.azurefd.net',
-        // agentId:10000,
-        //开发
-        url: 'https://devweb.792376.cc',
-        imgUrl:'https://qp-dev-cdn-g7cma9czg3gqe6ba.a01.azurefd.net',
-        agentId:10000,
+        url: 'http://165.154.110.60',
+        imgUrl: 'http://165.154.110.60',
+        agentId: 10000,
     },
-    // 开发环境
+    // 开发环境（本地开发时使用）
     development: {
-        url: 'https://devweb.792376.cc',
-        imgUrl:'https://qp-dev-cdn-g7cma9czg3gqe6ba.a01.azurefd.net',
-        agentId:10000,
+        url: 'http://localhost:10072',
+        imgUrl: 'http://localhost:10072',
+        agentId: 10000,
     },
 }
 

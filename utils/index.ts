@@ -3,6 +3,27 @@ import { startStore } from "@/stores/start"
 import environment from '@/utils/environments.ts'
 const baseUrl = environment.envConfigs.url
 
+const GAME_TYPE_ALIAS_MAP: Record<string, string> = {
+	elecgame: 'elecgame',
+	slots: 'elecgame',
+	'slot machines': 'elecgame',
+	arcade: 'elecgame',
+	chess: 'chess',
+	table: 'chess',
+	poker: 'chess',
+	fish: 'fish',
+	live: 'live',
+	sport: 'sport',
+	lottery: 'lottery',
+	esport: 'esport'
+}
+
+export function normalizeGameType(value: string) {
+	if (!value) return value
+	const key = String(value).trim().toLowerCase()
+	return GAME_TYPE_ALIAS_MAP[key] || key
+}
+
 //判断是否上一页
 export const getCurrentPagesBut = () => {
 	let isPrevPage = false
@@ -77,6 +98,9 @@ export const toPtah = (url : string, type : number = 1, isLogin : boolean = fals
 
 //分割数组
 export function pointsList(list : any) {
+	if (!Array.isArray(list) || !list.length) {
+		return []
+	}
 	let newList = []
 	list.forEach(it => {
 		const itList = it.game_type.split(',')
@@ -84,7 +108,7 @@ export function pointsList(list : any) {
 			let item = {
 				...it
 			}
-			item.game_type = its
+			item.game_type = normalizeGameType(its)
 
 			return item
 		})
@@ -105,22 +129,28 @@ export function menusFn(list : any, size : number = 6) {
 	const sportLisy=['WALI', 'BBIN', 'FBTY', 'HGTY']
 	let map = new Map();
 	list.forEach(item => {
+		item.game_type = normalizeGameType(item.game_type)
 
 		if (item.game_type_img && item.game_type_img.length) {
 			item.game_type_img = item.game_type_img.map(its => {
 				its.is_maintain = item.is_maintain
+				its.game_type = normalizeGameType(its.game_type)
 				return its
 			})
 			if (!map.has(item.game_type)) {
 				map.set(item.game_type, []);
 			}
 			const res = item.game_type_img.find(it => it.game_type == item.game_type)
-			map.get(item.game_type).push(res);
+			if (res) {
+				map.get(item.game_type).push(res);
+			}
 		}
 
 	});
 	const newAllLits = Array.from(map, ([game_type, list]) => ({ game_type, list }));
 	const allLits=newAllLits.map(it=>{
+		const hotList = it.list.filter((its: any) => Number(its?.hot) === 1)
+		it.list = hotList.length ? hotList : it.list.filter(Boolean)
 		if(it.game_type === 'elecgame'){
 			it.list= cgSortedArray(it.list,elecgameList)
 		}else if(it.game_type === 'chess'){
@@ -131,7 +161,7 @@ export function menusFn(list : any, size : number = 6) {
 			it.list= cgSortedArray(it.list,sportLisy)
 		}
 		return it
-	})
+	}).filter(it => it.list.length)
 	const newMaps = allLits.map(it => {
 		const ilist = menus23Fn(it.list, size)
 		return {

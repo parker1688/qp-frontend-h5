@@ -37,11 +37,23 @@ const vipProgressBut=async ()=>{
 
 //首页场馆
 const getylGameList = async () => {
-  const res = await getVenueList()
-  const list= await pointsList(res.data)
-  const resData  =await menusFn(list)
-  userStore().setVenueGameData(resData)
-  userStore().setAllVenueList(res.data)
+  try {
+    const res = await getVenueList()
+    const rawList = Array.isArray(res?.data) ? res.data : []
+    if (!rawList.length) {
+      userStore().setVenueGameData({ newMap: [], allLits: [] })
+      userStore().setAllVenueList([])
+      return
+    }
+    const list = await pointsList(rawList)
+    const resData = await menusFn(list)
+    userStore().setVenueGameData(resData)
+    userStore().setAllVenueList(rawList)
+  } catch (e) {
+    // 网络异常时也要清空，避免继续展示本地旧缓存
+    userStore().setVenueGameData({ newMap: [], allLits: [] })
+    userStore().setAllVenueList([])
+  }
 }
 //充值列表
 const rechargeChannelListBut=async ()=>{
